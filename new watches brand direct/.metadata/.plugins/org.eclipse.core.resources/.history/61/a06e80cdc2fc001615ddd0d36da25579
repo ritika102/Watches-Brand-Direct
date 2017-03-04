@@ -1,0 +1,5 @@
+package com.WatchesBrandDirect.dao;
+
+public interface CategoryDao {
+
+}

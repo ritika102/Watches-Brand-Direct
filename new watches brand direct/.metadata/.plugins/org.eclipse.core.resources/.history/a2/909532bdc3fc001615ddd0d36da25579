@@ -1,0 +1,13 @@
+package com.WatchesBrandDirect.Service;
+
+@Service
+public class CategoryServiceImpl implements CategoryService{
+	@Autowired
+private CategoryDao categoryDao;
+
+	public List<Category> getCategories() {
+		return categoryDao.getCategories();
+	}
+	
+
+}

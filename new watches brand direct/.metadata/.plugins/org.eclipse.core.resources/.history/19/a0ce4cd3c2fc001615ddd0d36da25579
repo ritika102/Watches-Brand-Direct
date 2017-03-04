@@ -1,0 +1,7 @@
+package com.WatchesBrandDirect.dao;
+
+public interface CategoryDao {
+	List<Category> getCategories();
+	
+
+}
