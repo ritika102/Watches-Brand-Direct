@@ -81,12 +81,12 @@ public String getAllProducts(Model model){
 	model.addAttribute("categories",categoryService.getCategories());
 	return "productlist";
 }
-@RequestMapping("/all/product/viewproduct/{id}")
-public String viewProduct(@PathVariable int id,Model model){
-	Product product=productService.getProductById(id);
+@RequestMapping("/all/product/viewProduct/{pId}")
+public String viewProduct(@PathVariable int pId,Model model){
+	Product product=productService.getProductById(pId);
 	model.addAttribute("product",product);
 	model.addAttribute("categories",categoryService.getCategories());
-	return "viewproduct";
+	return "viewProduct";
 }
 
 @RequestMapping("/admin/product/deleteproduct/{pId}")

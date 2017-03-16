@@ -1,5 +1,8 @@
 package com.WatchesBrandDirect.dao;
 
+
+
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import com.WatchesBrandDirect.model.Authorities;
 import com.WatchesBrandDirect.model.Cart;
 import com.WatchesBrandDirect.model.Customer;
+import com.WatchesBrandDirect.model.Users;
 
 @Repository
 public class CustomerDaoImpl implements CustomerDao{
@@ -39,4 +43,15 @@ private SessionFactory sessionFactory;
 		session.close();		
 	}
 
+	public Customer getCustomerByUsername(String username) {
+		Session session=sessionFactory.openSession();
+		Query query=session.createQuery("from Users where username=?");
+		query.setString(0, username);
+		Users users=(Users)query.uniqueResult();
+		//com.niit.model.Users 
+		Customer customer=users.getCustomer();
+		session.close();
+		return customer;
+		
+	}
 }

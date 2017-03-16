@@ -1,0 +1,6 @@
+package com.WatchesBrandDirect.Service;
+
+public interface CartItemService {
+	void addCartItem(CartItem cartItem);
+
+}

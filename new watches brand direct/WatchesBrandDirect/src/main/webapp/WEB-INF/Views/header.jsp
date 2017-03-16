@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+ <%@ taglib prefix="security"
+	uri="http://www.springframework.org/security/tags"%>
+   <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+    <%@ page isELIgnored="false" %>
   <title>Bootstrap Case</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,8 +12,14 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="Resources/css/header.css">
-    
+
+
+   
+ <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js"></script>
+  <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js"></script>
  
+    <link href="https://cdn.datatables.net/1.10.10/css/jquery.dataTables.min.css" rel="stylesheet">
   
 </head>
 <nav style="margin-top:-40px;" class="navbar navbar-inverse">
@@ -23,7 +33,7 @@
      
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
+      <ul class="nav navbar-nav ">
         <li class="active"><a href="home">Home
         <span class="glyphicon glyphicon-home"></span></a></li>
         <li class="dropdown">
@@ -37,30 +47,55 @@
         </li>
         <li><a href="contactus">ContactUs
         <span class="glyphicon glyphicon-phone"></span></a></li>
-      
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="register"> Register <span class="glyphicon glyphicon-user"></span></a></li>
+         <c:url var="url" value="/admin/product/productform"></c:url>
+      <c:if test="${pageContext.request.userPrincipal.name !=null }">
+      <security:authorize access="hasRole('ROLE_ADMIN')">
+   <li><a href="${url }">Add New Product</a></li>
+   </security:authorize>
+   
+   <c:url var="allProducts" value="/all/product/getAllProducts"></c:url>
+   
+   <li><a href="${allProducts}">Browse all products</a></li>
+    <li class="dropdown">
+			<a href="" class="dropdown-toggle" data-toggle="dropdown">
+                     Select by Category<b class="caret"></b></a>
+			<ul class="dropdown-menu">
+			<c:forEach var="c" items="${categories }">
+			<li>
+<a href="<c:url value="/all/product/productsByCategory?searchCondition=${c.categoryDetails }"></c:url>" >
+  ${c.categoryDetails }</a></li>
+			</c:forEach>
+			</ul>
+			</li>
+ </c:if>	
+			</ul>
+			
+			<ul class="nav navbar-nav navbar-right">
+			 <c:if test="${pageContext.request.userPrincipal.name !=null }">
      
-        <li><a href="#" data-toggle="modal" data-target="#login-modal"> Login <span class="glyphicon glyphicon-log-in"></span> </a></li>
-      </ul>
-      <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-    	  <div class="modal-dialog">
-				<div class="loginmodal-container">
-					<h1>Login to Your Account</h1><br>
-				  <form>
-					<input type="text" name="user" placeholder="Username">
-					<input type="password" name="pass" placeholder="Password">
-					<input type="submit" name="login" class="login loginmodal-submit" value="Login">
-				  </form>
-				  
-					
-				  <div class="login-help">
-					<a href="#">Register</a> - <a href="#">Forgot Password</a>
-				  </div>
-				</div>
-			</div>
-		  </div>
+			<li><a href="">welcome ${pageContext.request.userPrincipal.name }</a></li>
+		</c:if>
+			<c:if test="${pageContext.request.userPrincipal.name ==null }">
+			<li><a href="<c:url value="/login"></c:url>"><span class="glyphicon glyphicon-log-in"></span>  Login</a></li>
+			<li> <a href="<c:url value="/register"></c:url>"><span class="glyphicon glyphicon-pencil"></span> Register</a></li>
+			</c:if>
+			
+			<c:if test="${pageContext.request.userPrincipal.name !=null }">
+			<li><a href="<c:url value="/j_spring_security_logout"></c:url>">logout</a></li>
+			</c:if>
+			<li>
+        <button style="margin-top:10px;" type="button" class="btn btn-default btn-sm">
+          <span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart : 0
+        </button></li>
+			
+			
+
+
+  </ul>
+      
+    
+    
+   
     </div>
   </div>
 </nav>
