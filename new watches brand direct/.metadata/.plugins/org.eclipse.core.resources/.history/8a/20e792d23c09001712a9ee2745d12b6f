@@ -1,5 +1,0 @@
-package com.WatchesBrandDirect.Service;
-
-public interface CartService {
-
-}

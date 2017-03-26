@@ -1,5 +1,7 @@
 package com.WatchesBrandDirect.dao;
 
+import java.io.IOException;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,5 +19,13 @@ private SessionFactory sessionFactory;
 		session.close();
 		return cart;
 	}
+	public Cart validate(int cartId) throws IOException{
+        Cart cart = getCart(cartId);
+        if(cart == null || cart.getCartItems().size() == 0){
+            throw new IOException(cartId + "");
+        }
 
+       //update(cart);
+        return cart;
+    }
 }

@@ -4,13 +4,16 @@ package com.WatchesBrandDirect.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.WatchesBrandDirect.Service.CartItemService;
+import com.WatchesBrandDirect.Service.CartService;
 import com.WatchesBrandDirect.Service.CustomerService;
 import com.WatchesBrandDirect.Service.ProductService;
 import com.WatchesBrandDirect.model.Cart;
@@ -26,7 +29,10 @@ public class CartItemController {
 	private CustomerService customerService;
 	@Autowired
 	private ProductService productService;
+	@Autowired
+	private CartService cartService;
 @RequestMapping("cart/addCartItem/{pId}")
+@ResponseStatus(value=HttpStatus.NO_CONTENT)
 public void addCartItem(@PathVariable(value="pId") int productId){
 	User user=
 			(User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -46,7 +52,7 @@ public void addCartItem(@PathVariable(value="pId") int productId){
 			cartItem.setQuantity(cartItem.getQuantity() + 1);//increment the quantity
 			cartItem.setTotalPrice(cartItem.getQuantity() * p.getpPrice()); //update the total price
 			cartItemService.addCartItem(cartItem);//update the quantity in the cartitem
-			
+			return;
 		}	
 	}
 	
@@ -55,6 +61,21 @@ public void addCartItem(@PathVariable(value="pId") int productId){
 	cartItem.setTotalPrice(cartItem.getQuantity() * product.getpPrice());
 	cartItem.setProduct(product); //set product id
 	cartItem.setCart(cart);//set cart id
-	cartItemService.addCartItem(cartItem); //insert query	
+	cartItemService.addCartItem(cartItem);//insert query
 }
+	
+
+	@RequestMapping("/cart/removeCartItem/{cartItemId}")
+	@ResponseStatus(value=HttpStatus.NO_CONTENT)
+	public void removeCartItem(@PathVariable int cartItemId){
+		CartItem cartItem=cartItemService.getCartItem(cartItemId);
+		cartItemService.removeCartItem(cartItem);
+	}
+	@RequestMapping("/cart/removeAllCartItems/{cartId}")
+	@ResponseStatus(value=HttpStatus.NO_CONTENT)
+	public void removeAllCartItems(@PathVariable int cartId){
+		Cart cart=cartService.getCart(cartId);
+		cartItemService.removeAllCartItems(cart);
+	}
+
 }

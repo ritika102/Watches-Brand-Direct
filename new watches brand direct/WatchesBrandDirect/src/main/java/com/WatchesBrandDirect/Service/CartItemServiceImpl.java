@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.WatchesBrandDirect.dao.CartItemDao;
+import com.WatchesBrandDirect.model.Cart;
 import com.WatchesBrandDirect.model.CartItem;
 
 @Service
@@ -14,6 +15,16 @@ private CartItemDao cartItemDao;
 	  cartItemDao.addCartItem(cartItem);
 		
 	}
+	public void removeCartItem(CartItem cartItem) {
+		cartItemDao.removeCartItem(cartItem);
 
 }
+	public void removeAllCartItems(Cart cart) {
+		cartItemDao.removeAllCartItems(cart);
+}
+	public CartItem getCartItem(int cartItemId) {
+		return cartItemDao.getCartItem(cartItemId);
+	}
+}
+
 

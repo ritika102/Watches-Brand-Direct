@@ -1,6 +1,8 @@
 
 
 <%@ include file="header.jsp" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+    <%@ page isELIgnored="false" %>
 
 <style>
 .carousel-inner > .item > img,
@@ -273,7 +275,7 @@ h1{
             <div class="overlay">
                <h2>Sports</h2>
                <p class="info">
-               <a href="#" style="color:#FFFFFF;  font-size:15px; font-family:Arial Black"> SHOP NOW</a></p>
+               <a href="<c:url value="/login"></c:url>" style="color:#FFFFFF;  font-size:15px; font-family:Arial Black"> SHOP NOW</a></p>
             </div>
         </div>
         </div>

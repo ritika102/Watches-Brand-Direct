@@ -84,10 +84,9 @@
 			<li><a href="<c:url value="/j_spring_security_logout"></c:url>">logout</a></li>
 			</c:if>
 			<li>
-        <button style="margin-top:10px;" type="button" class="btn btn-default btn-sm">
-          <span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart : 0
-        </button></li>
-			
+      <security:authorize access="hasRole('ROLE_USER')">
+        <li><a href="<c:url value="/cart/getCartId"></c:url>"><span class="glyphicon glyphicon-shopping-cart"></span>    Shopping Cart:0</a></li>
+        </security:authorize>
 			
 
 
