@@ -13,48 +13,38 @@
         	<div class="col-md-3 footer-brand animated fadeInLeft">
             	<h2>Watch Brands Direct</h2>
                 <p></p>
-                <p>Â© 2017, All rights reserved</p>
+                <p> 2017, All rights reserved</p>
             </div>
         	<div class="col-md-4 footer-nav animated fadeInUp">
-            	<h4>Menu â€”</h4>
+            	<h4>CAREERS€”  </h4>
             	<div class="col-md-6">
                     <ul class="pages">
-                        <li><a href="#">Travel</a></li>
-                        <li><a href="#">Nature</a></li>
-                        <li><a href="#">Explores</a></li>
-                        <li><a href="#">Science</a></li>
-                        <li><a href="#">Advice</a></li>
+                       
+                        <li><a href="http://www.hublot.com/en/jobs-offers">@ Hublot</a></li>
+                         <li><a href="http://int.piaget.com/recruitment">@ Piaget</a></li>
+                          <li><a href="http://www.patek.com/en/company/careers">@ Patek Philippe </a></li>
+                         
+                        
                     </ul>
                 </div>
             	<div class="col-md-6">
                     <ul class="list">
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Contacts</a></li>
-                        <li><a href="#">Terms & Condition</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
+            
+                        
                     </ul>
                 </div>
             </div>
         	<div class="col-md-2 footer-social animated fadeInDown">
             	<h4>Follow Us</h4>
             	<ul>
-                	<li><a href="#">Facebook</a></li>
-                	<li><a href="#">Twitter</a></li>
-                	<li><a href="#">Instagram</a></li>
+                	<li><a href="https://www.facebook.com/">Facebook</a></li>
+                	<li><a href="https://twitter.com/login">Twitter</a></li>
+                	<li><a href="https://www.instagram.com/accounts/login/">Instagram</a></li>
                 	<li><a href="#"></a></li>
                 </ul>
             </div>
         	<div class="col-md-3 footer-ns animated fadeInRight">
-            	<h4>Newsletter</h4>
-                <p>A rover wearing a fuzzy suit doesnâ€™t alarm the real penguins</p>
-                <p>
-                    <div class="input-group">
-                      <input type="text" class="form-control" placeholder="Search for...">
-                      <span class="input-group-btn">
-                        <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-envelope"></span></button>
-                      </span>
-                    </div><!-- /input-group -->
-                 </p>
+            	
             </div>
         </div>
     </footer>

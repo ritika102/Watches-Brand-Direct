@@ -36,15 +36,6 @@
       <ul class="nav navbar-nav ">
         <li class="active"><a href="home">Home
         <span class="glyphicon glyphicon-home"></span></a></li>
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">BRANDS<span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Rado</a></li>
-            <li><a href="#">Rolex</a></li>
-            <li><a href="#">GShock</a></li>
-             <li><a href="#">Fastrack</a></li>
-          </ul>
-        </li>
         <li><a href="contactus">ContactUs
         <span class="glyphicon glyphicon-phone"></span></a></li>
          <c:url var="url" value="/admin/product/productform"></c:url>
